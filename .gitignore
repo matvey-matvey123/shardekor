@@ -1,0 +1,23 @@
+# зависимости
+site/node_modules/
+
+# сборка сайта (генерируется командой npm run build)
+site/.next/
+site/out/
+
+# данные парсера — большие артефакты (кэш HTML, исходные фото, WebP),
+# восстанавливаются командами python scrape.py / menu.py / tree.py / optimize.py
+scraper/out/
+scraper/__pycache__/
+__pycache__/
+*.pyc
+
+# логи
+*.log
+*.err
+
+# редакторы и ОС
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

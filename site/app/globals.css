@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fdfaf5;
+  --color-cream-2: #f6efe6;
+  --color-sand: #ece0d1;
+  --color-ink: #2a2320;
+  --color-ink-soft: #6b5d56;
+  --color-rose: #b4736f;
+  --color-rose-soft: #f0dcd8;
+  --color-gold: #b8935a;
+  --color-sage: #8a9a86;
+
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
+  --font-body: var(--font-manrope), system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+
+/* тонкие декоративные разделители */
+.rule {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    var(--color-sand) 20%,
+    var(--color-sand) 80%,
+    transparent
+  );
+  height: 1px;
+}
+
+.grain {
+  background-image: radial-gradient(
+      circle at 20% 15%,
+      rgba(180, 115, 111, 0.08),
+      transparent 45%
+    ),
+    radial-gradient(circle at 85% 80%, rgba(184, 147, 90, 0.09), transparent 40%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.btn-rose {
+  border-radius: 9999px;
+  background: var(--color-rose);
+  padding: 0.85rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 0.2s;
+}
+.btn-rose:hover {
+  background: var(--color-ink);
+}
+
+/* плавное появление при скролле */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
