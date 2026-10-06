@@ -106,9 +106,9 @@ export default async function CategoryPage({
             <div className="mt-6 rounded-2xl border border-sand/70 bg-white/50 px-5 py-4 text-sm text-ink-soft">
               Ещё {hidden} товаров в этом разделе. Выберите подраздел выше или
               воспользуйтесь{" "}
-              <a href="/search/" className="font-medium text-rose hover:underline">
+              <Link href="/search/" className="font-medium text-rose hover:underline">
                 поиском
-              </a>
+              </Link>
               .
             </div>
           )}

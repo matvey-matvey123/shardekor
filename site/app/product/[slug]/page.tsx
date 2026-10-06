@@ -5,6 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import OrderBlock from "@/components/OrderBlock";
 import Prose from "@/components/Prose";
 import { getCatalog, fmtPrice, plainText } from "@/lib/catalog";
+import { withBase } from "@/lib/base";
 import { SITE } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -46,7 +47,7 @@ export default async function ProductPage({
             <div className="aspect-square">
               {p.image ? (
                 <img
-                  src={`/img/${p.image}`}
+                  src={withBase(`/img/${p.image}`)}
                   alt={p.name}
                   loading="eager"
                   decoding="async"
@@ -70,7 +71,7 @@ export default async function ProductPage({
                   key={g}
                   className="aspect-square overflow-hidden rounded-xl border border-sand/60 bg-white/50"
                 >
-                  <img src={`/img/${g}`} alt={p.name} loading="lazy" className="h-full w-full object-cover" />
+                  <img src={withBase(`/img/${g}`)} alt={p.name} loading="lazy" className="h-full w-full object-cover" />
                 </div>
               ))}
             </div>
@@ -98,9 +99,9 @@ export default async function ProductPage({
                   : "В наличии"
                 : "Под заказ — уточните сроки"}
             </p>
-            <a href="/contacts/" className="btn-rose mt-5 inline-block">
+            <Link href="/contacts/" className="btn-rose mt-5 inline-block">
               Заказать
-            </a>
+            </Link>
           </div>
 
           {p.extra_fields.length > 0 && (

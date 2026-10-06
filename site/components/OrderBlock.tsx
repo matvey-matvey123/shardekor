@@ -1,4 +1,5 @@
 import { SITE } from "@/lib/site";
+import { withBase } from "@/lib/base";
 
 export default function OrderBlock({
   title = "Хотите узнать актуальную цену и наличие?",
@@ -61,7 +62,7 @@ export default function OrderBlock({
         )}
         {!SITE.phone && !SITE.telegram && !SITE.whatsapp && !SITE.email && (
           <a
-            href="/contacts/"
+            href={withBase("/contacts/")}
             className="rounded-full bg-rose px-6 py-3 text-sm font-semibold text-white transition hover:bg-ink"
           >
             Перейти в контакты

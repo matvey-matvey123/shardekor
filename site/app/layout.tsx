@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { withBase } from "@/lib/base";
 
 const display = Cormorant_Garamond({
   subsets: ["cyrillic", "latin"],
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "ШарДекор",
   },
   robots: { index: true, follow: true },
-  icons: { icon: "/favicon.svg", apple: "/favicon.svg" },
+  icons: { icon: withBase("/favicon.svg"), apple: withBase("/favicon.svg") },
 };
 
 export const viewport = {

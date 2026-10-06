@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getCatalog, fmtPrice, pageUrl, type Product } from "@/lib/catalog";
+import { withBase } from "@/lib/base";
 import ProductCard from "@/components/ProductCard";
 import OrderBlock from "@/components/OrderBlock";
 import { SITE } from "@/lib/site";
@@ -212,7 +213,7 @@ function Tile({ p, tall }: { p?: Product; tall?: boolean }) {
     >
       <div className={tall ? "aspect-4/3" : "aspect-square"}>
         <img
-          src={`/img/${p.image}`}
+          src={withBase(`/img/${p.image}`)}
           alt={p.name}
           loading="eager"
           decoding="async"

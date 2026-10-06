@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Product } from "@/lib/catalog";
 import { fmtPrice } from "@/lib/catalog";
+import { withBase } from "@/lib/base";
 
 export default function ProductCard({
   p,
@@ -17,7 +18,7 @@ export default function ProductCard({
       <div className="relative aspect-4/5 overflow-hidden bg-cream-2">
         {p.image ? (
           <img
-            src={`/img/${p.image}`}
+            src={withBase(`/img/${p.image}`)}
             alt={p.name}
             loading={priority ? "eager" : "lazy"}
             decoding="async"

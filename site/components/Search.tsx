@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { withBase } from "@/lib/base";
 
 type Row = [string, string, string, number, string, string];
 
@@ -27,7 +28,7 @@ export default function Search() {
     if (start) setQ(start);
     let alive = true;
     setBusy(true);
-    fetch("/search-index.json")
+    fetch(withBase("/search-index.json"))
       .then((r) => r.json())
       .then((d: Row[]) => alive && setRows(d))
       .catch(() => alive && setRows([]))
@@ -96,7 +97,7 @@ export default function Search() {
               <div className="aspect-4/5 overflow-hidden bg-cream-2">
                 {img ? (
                   <img
-                    src={`/img/${img}`}
+                    src={withBase(`/img/${img}`)}
                     alt={name}
                     loading="lazy"
                     decoding="async"
@@ -131,9 +132,9 @@ export default function Search() {
       {results && results.length === 0 && (
         <p className="mt-8 text-center text-ink-soft">
           Ничего не нашли. Попробуйте другое слово или{" "}
-          <a href="/contacts/" className="text-rose hover:underline">
+          <Link href="/contacts/" className="text-rose hover:underline">
             спросите у нас
-          </a>
+          </Link>
           .
         </p>
       )}
