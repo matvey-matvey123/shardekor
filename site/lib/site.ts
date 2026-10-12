@@ -8,11 +8,11 @@ export const SITE = {
   tagline: "Свадебная атрибутика и оформление шарами",
 
   // TODO: указать свои данные
-  phone: "",
+  phone: "+7 926 199-37-76",
   phone2: "",
   email: "",
   telegram: "",
-  whatsapp: "",
+  whatsapp: "79261993776",
   vkGroup: "75987459",
   metrikaId: "40923234",
 
