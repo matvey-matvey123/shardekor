@@ -213,3 +213,26 @@ fs.mkdirSync(deploy, { recursive: true });
   fs.writeFileSync(path.join(deploy, ".htaccess"), ht.join("\n"), "utf8");
   console.log(".htaccess готов");
 }
+
+// ---------- удаление служебных файлов Next/Turbopack (RSC-дампы) из site/out
+{
+  const out = path.join(root, "out");
+  if (fs.existsSync(out)) {
+    let removed = 0;
+    (function walk(dir) {
+      for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+        const p = path.join(dir, e.name);
+        if (e.isDirectory()) {
+          if (e.name.startsWith("__next")) {
+            fs.rmSync(p, { recursive: true, force: true });
+            removed++;
+          } else walk(p);
+        } else if (e.name === "index.txt" || e.name.startsWith("__next")) {
+          fs.rmSync(p);
+          removed++;
+        }
+      }
+    })(out);
+    if (removed) console.log("очищено служебных файлов из out:", removed);
+  }
+}
