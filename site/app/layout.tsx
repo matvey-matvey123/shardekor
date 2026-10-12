@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "ШарДекор",
   },
   robots: { index: true, follow: true },
-  icons: { icon: withBase("/favicon.svg"), apple: withBase("/favicon.svg") },
+  icons: { icon: withBase("/icon.png"), apple: withBase("/icon.png") },
 };
 
 export const viewport = {

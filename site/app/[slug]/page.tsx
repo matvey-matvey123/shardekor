@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Prose from "@/components/Prose";
 import OrderBlock from "@/components/OrderBlock";
+import DeliveryMap from "@/components/DeliveryMap";
+import VenueMap from "@/components/VenueMap";
+import VkGoods from "@/components/VkGoods";
 import { getCatalog } from "@/lib/catalog";
 
 export const dynamic = "force-static";
@@ -13,8 +16,9 @@ export default async function StaticPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const slugDec = decodeURIComponent(slug);
   const { staticPages } = getCatalog();
-  const page = staticPages.find((p) => p.url === `/${decodeURIComponent(slug)}/`);
+  const page = staticPages.find((p) => p.url === `/${slugDec}/`);
   if (!page) notFound();
 
   return (
@@ -24,6 +28,15 @@ export default async function StaticPage({
         {page.title}
       </h1>
       <div className="mt-6 rule" />
+
+      {slugDec === "dostavka-i-oplata" && (
+        <>
+          <DeliveryMap />
+          <VkGoods />
+        </>
+      )}
+      {slugDec === "oformlenie-svadby" && <VenueMap />}
+
       <div className="mt-8">
         <Prose text={page.html} />
       </div>
